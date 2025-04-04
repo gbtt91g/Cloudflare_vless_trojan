@@ -1,4 +1,4 @@
-name: Obfuscate and Commit
+name: Obfuscate_Vless
 
 on:
     #push:
@@ -41,21 +41,6 @@ jobs:
           --transform-object-keys true \
           --unicode-escape-sequence true
 
-      - name: Obfuscate trojan
-        run: |
-          javascript-obfuscator trojan_明文源码.js --output trojan_worker.js \
-          --compact true \
-          --control-flow-flattening true \
-          --control-flow-flattening-threshold 1 \
-          --dead-code-injection true \
-          --dead-code-injection-threshold 1 \
-          --identifier-names-generator hexadecimal \
-          --rename-globals true \
-          --string-array true \
-          --string-array-encoding 'rc4' \
-          --string-array-threshold 1 \
-          --transform-object-keys true \
-          --unicode-escape-sequence true
 
       - name: Commit changes Vless_worker
         run: |
@@ -63,13 +48,6 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add _worker.js
           git commit -m "Obfuscate _worker.js" || echo "No changes to commit"
-
-      - name: Commit changes trojan_worker
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add trojan_worker.js
-          git commit -m "Obfuscate trojan_worker.js" || echo "No changes to commit"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
