@@ -27,7 +27,7 @@ jobs:
 
       - name: Obfuscate code
         run: |
-          javascript-obfuscator /Vless_workers_pages/明源码.js --output /Vless_workers_pages/_worker.js \
+          javascript-obfuscator Vless_workers_pages/明源码.js --output Vless_workers_pages/_worker.js \
           --compact true \
           --control-flow-flattening true \
           --control-flow-flattening-threshold 1 \
