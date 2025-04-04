@@ -41,7 +41,7 @@ jobs:
           --transform-object-keys true \
           --unicode-escape-sequence true
 
-      - name: Obfuscate Vless
+      - name: Obfuscate trojan
         run: |
           javascript-obfuscator trojan_明文源码.js --output trojan_worker.js \
           --compact true \
